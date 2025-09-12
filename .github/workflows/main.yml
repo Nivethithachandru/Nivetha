@@ -23,7 +23,7 @@ jobs:
       - name: Build and run Docker image
         run: |
           docker build -t nivekrish/django-ecommerce:latest .
-          docker run -p 8010:8010 --name ecom ecommerce 
+          docker run -p 8010:8010 --name ecom nivekrish/django-ecommerce:latest
 
       - name: Push Docker image
         run: |
