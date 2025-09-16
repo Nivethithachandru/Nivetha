@@ -3,6 +3,14 @@ services:
     image: nivekrish/django-ecommerce:latest
     networks:
       - web
+    volumes:
+      - ./db.sqlite3:/app/db.sqlite3        # Persist the SQLite file outside the container
+      - static_volume:/app/staticfiles      # Share static files with nginx
+    environment:
+      - DJANGO_SETTINGS_MODULE=ecommerce.settings
+    depends_on:
+      - nginx
+
 
   nginx:
     image: nginx:latest
@@ -10,6 +18,7 @@ services:
       - "80:80"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
+       - static_volume:/static 
     depends_on:
       - app
     networks:
