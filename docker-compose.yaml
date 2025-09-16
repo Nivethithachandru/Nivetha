@@ -10,7 +10,7 @@ services:
       - "81:81"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
-      - ./staticfiles:/app/staticfiles:ro 
+      - ./static:/app/staticfiles:ro 
     depends_on:
       - app
     networks:
