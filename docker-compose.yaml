@@ -10,7 +10,9 @@ services:
       - "81:81"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./Nivetha:/app/
       - ./static:/app/staticfiles:ro 
+    
     depends_on:
       - app
     networks:
