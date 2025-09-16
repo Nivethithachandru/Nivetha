@@ -12,8 +12,7 @@ COPY requirements.txt /app/
 RUN pip3 install --no-cache-dir -r requirements.txt
 COPY . /app/
 EXPOSE 8002
-RUN python manage.py collectstatic --noinput
-CMD ["bash", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8002"]
+CMD ["bash", "-c", "python manage.py migrate && python manage.py collectstatic --noinput && python manage.py runserver 0.0.0.0:8002"]
 
 
 
