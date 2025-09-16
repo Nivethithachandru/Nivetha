@@ -8,8 +8,6 @@ services:
       - static_volume:/app/staticfiles      # Share static files with nginx
     environment:
       - DJANGO_SETTINGS_MODULE=ecommerce.settings
-    depends_on:
-      - nginx
 
 
   nginx:
