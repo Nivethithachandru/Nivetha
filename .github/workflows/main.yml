@@ -23,7 +23,7 @@ jobs:
       - name: Build and run Docker image
         run: |
           docker build -t nivekrish/django-ecommerce:latest . 
-          docker compose up -d
+          docker run -d 8002:8002 --name django django-ecommerce 
     
       - name: Push Docker image
         run: |
