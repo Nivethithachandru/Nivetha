@@ -1,7 +1,7 @@
 services:
   app:
   build: .
-    image: django-ecommerce
+    image: nivekrish/django-ecommerce:latest
     networks:
       - web
 
