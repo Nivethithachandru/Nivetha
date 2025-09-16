@@ -1,8 +1,19 @@
 services:
-  web:
-    build: .
+  app:
+    image: django-ecommerce
+    networks:
+      - web
+
+  nginx:
+    image: nginx:latest
     ports:
-      - "8002:8002"
+      - "80:80"
     volumes:
-      - ./media:/app/media
-      - ./db.sqlite3:/app/db.sqlite3  
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - app
+    networks:
+      - web
+
+networks:
+  web:
