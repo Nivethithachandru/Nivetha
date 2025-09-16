@@ -1,5 +1,6 @@
+
 <!DOCTYPE html>
-{% load static %}
+
 <html>
 <head>
 	<title>Ecommerce</title>
@@ -15,9 +16,9 @@
 	<script src="https://maxscdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
 
-	<link rel="stylesheet" type="text/css" href="{% static 'store/css/main.css' %}">
+	<link rel="stylesheet" type="text/css" href="/static/store/css/main.css">
 	<script type="text/javascript">
-		var user = '{{request.user}}'
+		var user = 'AnonymousUser'
 	</script>
 	<style>
 
@@ -53,7 +54,7 @@
 <body>
 
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <h5><strong><a class="navbar-brand" href="{% url 'store' %}" style="color: white">Ecommerce</a></strong></h5>
+	  <h5><strong><a class="navbar-brand" href="/" style="color: white">Ecommerce</a></strong></h5>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
@@ -61,13 +62,13 @@
 	  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	    <ul class="navbar-nav mr-auto">
 	      <li class="nav-item active">
-	        <h5><strong><a class="nav-link" href="{% url 'store' %}" style="color: white">Store <span class="sr-only">(current)</span></a></strong></h5>
+	        <h5><strong><a class="nav-link" href="/" style="color: white">Store <span class="sr-only">(current)</span></a></strong></h5>
 	      </li>
 	 
 	    </ul>
 	    <div class="form-inline my-2 my-lg-0">
 	    	
-	    	<form method="get" action="{% url 'search' %}" class="form-inline my-2 my-lg-0">
+	    	<form method="get" action="/search/" class="form-inline my-2 my-lg-0">
 					<input type="search" name="search" aria-label="Search" placeholder="Search" class="form-control mr-sm-2">
 					<button class="btn btn-success my-2 mr-sm-3" type="submit">Search</button>
 			</form>
@@ -75,32 +76,35 @@
 			<div class="dropdown mr-sm-3">
 					  <h5><strong><a style="color: white">Categories</a></strong></h5>
 					  <div class="dropdown-content">
-						kjkj
-					    {% for product in product_categories %}
-					    	<a href="{% url 'show_items' product.id %}">{{product.name}}</a>
-					    {% endfor%}
+					    
+					    	<a href="/show_items/2">Men&#x27;s Fashion</a>
+					    
+					    	<a href="/show_items/3">Women&#x27;s Fashion</a>
+					    
+					    	<a href="/show_items/6">Beauty Products</a>
+					    
+					    	<a href="/show_items/7">Watches</a>
+					    
+					    	<a href="/show_items/8">Electronics</a>
+					    
+					    	<a href="/show_items/9">Grocery</a>
+					    
+					    	<a href="/show_items/10">Kids Fashion</a>
+					    
+					    	<a href="/show_items/11">Sports</a>
+					    
 					  </div>
 			</div>
-	    	{% if request.user.is_authenticated %}
-	     		<h5 class="mr-sm-3"><strong><a href="{% url 'order_details' %}" style="color: white">Orders</a></strong></h5>
-	     		<h5 class="mr-sm-3"><strong><a href="{% url 'user_logout' %}" style="color: white">Logout</a></strong></h5>
-	     		{% if request.user.profile.photo %}
-					<a href="{% url 'profilepage' username=user.username %}"><img class="mr-sm-1" src="{{ request.user.profile.photo.url }}" width="35" height="35"></a>
-				{% else %}
-					<a href="{% url 'profilepage' username=user.username %}"><img class="mr-sm-1" src="/static/images/default.png" width="35" , height="35"></a>
-				{% endif %}
-		    	<h5><strong><a href="{% url 'profilepage' username=request.user.username %}" style="color: white">{{request.user.username}}</a></strong></h5>
-	     	
-	     	{% else %}
-	     		<h5 class="mr-sm-3"><strong><a href="{% url 'user_login' %}" style="color: white">Login</a></strong></h5>
+	    	
+	     		<h5 class="mr-sm-3"><strong><a href="/login/" style="color: white">Login</a></strong></h5>
 	     		<div>
-		     		<h5 class="mr-sm-3"><strong><a href="{% url 'register' %}" style="color: white">SignUp</a></strong></h5>
+		     		<h5 class="mr-sm-3"><strong><a href="/register/" style="color: white">SignUp</a></strong></h5>
 	     		</div>
-	     	{% endif %}
-	     	<a href="{% url 'cart' %}">
-	    		<img  id="cart-icon" src="{% static 'images/cart.png' %}">
+	     	
+	     	<a href="/cart/">
+	    		<img  id="cart-icon" src="/static/images/cart.png">
 	    	</a>
-	    	<p id="cart-total">{{total_item_cart}}</p>
+	    	<p id="cart-total">0</p>
 
 	    </div>
 	  </div>
@@ -109,8 +113,98 @@
 	<!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
 	<div class="jumbotron jumbotron-fluid">
 		<div class="container container-fluid">
-			{% block content %}
-			{% endblock %}
+			
+	<div class="row">
+		
+			<div class="col-lg-4">
+				<img class="thumbnail" src="/images/mens_wear_ABfSXzW.jfif">
+				<div class="box-element product">
+					<h6><strong>Men&#x27;s Fashion</strong></h6>
+					<hr>
+					<a class="btn btn-outline-success" href="/show_items/2">View Items</a>
+
+				</div>
+			</div>
+		
+			<div class="col-lg-4">
+				<img class="thumbnail" src="/images/womens_wear_UZcZTvd.jfif">
+				<div class="box-element product">
+					<h6><strong>Women&#x27;s Fashion</strong></h6>
+					<hr>
+					<a class="btn btn-outline-success" href="/show_items/3">View Items</a>
+
+				</div>
+			</div>
+		
+			<div class="col-lg-4">
+				<img class="thumbnail" src="/images/beauty_YT7nJkz.jfif">
+				<div class="box-element product">
+					<h6><strong>Beauty Products</strong></h6>
+					<hr>
+					<a class="btn btn-outline-success" href="/show_items/6">View Items</a>
+
+				</div>
+			</div>
+		
+			<div class="col-lg-4">
+				<img class="thumbnail" src="/images/watch_4kOnqsa.jpg">
+				<div class="box-element product">
+					<h6><strong>Watches</strong></h6>
+					<hr>
+					<a class="btn btn-outline-success" href="/show_items/7">View Items</a>
+
+				</div>
+			</div>
+		
+			<div class="col-lg-4">
+				<img class="thumbnail" src="/images/electronic_eRKpuLd.jfif">
+				<div class="box-element product">
+					<h6><strong>Electronics</strong></h6>
+					<hr>
+					<a class="btn btn-outline-success" href="/show_items/8">View Items</a>
+
+				</div>
+			</div>
+		
+			<div class="col-lg-4">
+				<img class="thumbnail" src="/images/grocery_hj0Gqlv.jfif">
+				<div class="box-element product">
+					<h6><strong>Grocery</strong></h6>
+					<hr>
+					<a class="btn btn-outline-success" href="/show_items/9">View Items</a>
+
+				</div>
+			</div>
+		
+			<div class="col-lg-4">
+				<img class="thumbnail" src="/images/kids_fashion_MMNHnju.jfif">
+				<div class="box-element product">
+					<h6><strong>Kids Fashion</strong></h6>
+					<hr>
+					<a class="btn btn-outline-success" href="/show_items/10">View Items</a>
+
+				</div>
+			</div>
+		
+			<div class="col-lg-4">
+				<img class="thumbnail" src="/images/sports_zcnHo7n.jfif">
+				<div class="box-element product">
+					<h6><strong>Sports</strong></h6>
+					<hr>
+					<a class="btn btn-outline-success" href="/show_items/11">View Items</a>
+
+				</div>
+			</div>
+		
+	</div>
+
+	<br><br>
+	<blockquote class="blockquote text-center">
+		<p class="mb-0">** That's it! **</p>
+		<footer class="blockquote-footer"> You've scrolled to the end of the List!</footer>
+	</blockquote>
+
+	
 		</div>
 	</div>
 	<footer class="footer">
@@ -120,7 +214,7 @@
 	<script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 	<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
 
-	<script type="text/javascript" src="{% static 'store/js/main.js' %}"></script>
+	<script type="text/javascript" src="/static/store/js/main.js"></script>
 	
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 
