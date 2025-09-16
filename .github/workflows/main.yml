@@ -24,10 +24,6 @@ jobs:
         run: |
           docker build -t nivekrish/django-ecommerce:latest .
 
-      - name: Run collectstatic in built container
-        run: |
-          docker run --rm nivekrish/django-ecommerce:latest python3 manage.py collectstatic --noinput
-
       - name: Start Docker Containers
         run: |
           docker compose up -d
