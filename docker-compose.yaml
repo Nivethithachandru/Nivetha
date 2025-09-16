@@ -1,7 +1,6 @@
 services:
   app:
-  build: .
-    image: django-ecommerce
+    image: "django-ecommerce"
     networks:
       - web
 
