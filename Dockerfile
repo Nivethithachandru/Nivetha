@@ -9,10 +9,9 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean
 WORKDIR /app
 COPY requirements.txt /app/
+COPY db.sqlite3 /app/db.sqlite3
 RUN pip3 install --no-cache-dir -r requirements.txt
 COPY . /app/
-COPY db.sqlite3 /app/
-
 EXPOSE 8000
 RUN python3 manage.py makemigrations
 RUN python3 manage.py migrate
