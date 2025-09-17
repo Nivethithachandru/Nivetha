@@ -11,7 +11,7 @@ WORKDIR /app
 COPY requirements.txt /app/
 RUN pip3 install --no-cache-dir -r requirements.txt
 COPY . /app/
-COPY ./store/static /app/static
+COPY db.sqlite3 /app/
 
 EXPOSE 8000
 RUN python3 manage.py makemigrations
