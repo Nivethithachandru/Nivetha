@@ -3,11 +3,11 @@ services:
     image: nivekrish/django-ecommerce:latest
     networks:
       - web
-
+   
   nginx:
     image: nginx:latest
     ports:
-      - "81:81"
+      - "80:80"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
     depends_on:
