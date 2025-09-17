@@ -10,7 +10,7 @@ services:
       - "80:80"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
-      - /Nivetha:/app/
+      - ./static:/static:ro
     depends_on:
       - app
     networks:
