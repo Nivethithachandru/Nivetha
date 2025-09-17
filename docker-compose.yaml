@@ -12,7 +12,6 @@ services:
       - ./nginx.conf:/etc/nginx/nginx.conf
       - ./static:/app/static:ro
       - ./static/images:/app/static/images:ro
-      - ./static/store:/app/static/store:ro
       
     depends_on:
       - app
