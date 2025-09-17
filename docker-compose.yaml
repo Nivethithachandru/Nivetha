@@ -10,8 +10,8 @@ services:
       - "80:80"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
-      - ./static:/app/static
-      - ./static/images:/app/static/images
+      - C:/Users/cosai/.docker/Nivetha/ecommerce/:/usr/share/nginx/ecommerce/ 
+      - C:/Users/cosai/.docker/Nivetha/static/:/usr/share/nginx/static/
       
     depends_on:
       - app
