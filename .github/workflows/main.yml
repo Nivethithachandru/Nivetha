@@ -20,6 +20,12 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           
+      - name: Upload SQLite DB as artifact
+        uses: actions/upload-artifact@v4
+        with:
+         name: sqlite-db
+         path: db.sqlite3
+
       - name: Build Image
         run: |
           docker build -t nivekrish/django-ecommerce:latest .
