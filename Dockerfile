@@ -13,8 +13,6 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 COPY . /app/
 EXPOSE 8000
 RUN python3 manage.py collectstatic --noinput
-COPY ./static /app/static
-COPY ./static/images /app/static/images
 CMD ["bash", "-c", "python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"]
 
 
