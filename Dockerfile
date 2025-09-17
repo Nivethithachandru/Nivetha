@@ -15,7 +15,6 @@ EXPOSE 8000
 RUN python3 manage.py collectstatic --noinput
 COPY ./static /static
 COPY ./static/images /static/images
-COPY ./static/store /static/store
 CMD ["bash", "-c", "python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"]
 
 
