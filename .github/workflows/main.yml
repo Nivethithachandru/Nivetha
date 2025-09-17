@@ -23,7 +23,7 @@ jobs:
       - name: Build Image
         run: |
           docker build -t nivekrish/django-ecommerce:latest .
-          docker compose up 
+          docker compose up -d
 
       - name: Tag and Push Docker Image
         run: |
